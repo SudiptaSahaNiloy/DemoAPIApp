@@ -26,7 +26,7 @@ namespace DemoAPIApp.Controllers
 
             TokenID = result.TokenId;
 
-            return json;
+            return TokenID;
         }
 
         [HttpPost("GetSearchResults")]
@@ -37,23 +37,24 @@ namespace DemoAPIApp.Controllers
             return new SearchService().Search(search, TokenID, SearchURL);
         }
 
-        [HttpPost("TestData")]
-        public string Test([FromBody] TestModel test)
-        {
-            string URL = "https://jsonplaceholder.typicode.com/posts";
+        //For Testing Purpose
+        //[HttpPost("TestData")]
+        //public string Test([FromBody] TestModel test)
+        //{
+        //    string URL = "https://jsonplaceholder.typicode.com/posts";
 
-            var json = new TestService().Test(test, URL);
+        //    var json = new TestService().Test(test, URL);
 
-            var result = JsonConvert.DeserializeObject<TestModel>(json);
+        //    var result = JsonConvert.DeserializeObject<TestModel>(json);
 
-            return result.title;
-        }
+        //    return result.title;
+        //}
 
-        [HttpGet("GetAll")]
-        public string GetAll() {
-            string URL = "https://jsonplaceholder.typicode.com/posts";
+        //[HttpGet("GetAll")]
+        //public string GetAll() {
+        //    string URL = "https://jsonplaceholder.typicode.com/posts";
 
-            return new GetAllService().GetAll(URL);
-        }
+        //    return new GetAllService().GetAll(URL);
+        //}
     }
 }
